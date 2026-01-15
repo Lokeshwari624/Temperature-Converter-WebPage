@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .converter {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            width: 320px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+        }
+
+        input, select {
+            background: #334155;
+            color: white;
+        }
+
+        button {
+            background: #22c55e;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #16a34a;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 12px;
+            background: #020617;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .error {
+            color: #f87171;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter">
+    <h2>Temperature Converter</h2>
+
+    <!-- Input Field -->
+    <input type="text" id="tempInput" placeholder="Enter temperature">
+
+    <!-- From Unit -->
+    <select id="fromUnit">
+        <option value="C">Celsius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="K">Kelvin (K)</option>
+    </select>
+
+    <!-- To Unit -->
+    <select id="toUnit">
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="C">Celsius (°C)</option>
+        <option value="K">Kelvin (K)</option>
+    </select>
+
+    <!-- Convert Button -->
+    <button onclick="convertTemp()">Convert</button>
+
+    <!-- Result Display -->
+    <div class="result" id="result">Converted temperature will appear here</div>
+</div>
+
+=<script>
+    function convertTemp() {
+        const input = document.getElementById("tempInput").value;
+        const from = document.getElementById("fromUnit").value;
+        const to = document.getElementById("toUnit").value;
+        const resultBox = document.getElementById("result");
+
+        if (input === "" || isNaN(input)) {
+            resultBox.innerHTML = "<span class='error'>Please enter a valid number</span>";
+            return;
+        }
+
+        let temp = parseFloat(input);
+        let converted;
+
+        // Convert input to Celsius first
+        if (from === "F") {
+            temp = (temp - 32) * 5 / 9;
+        } else if (from === "K") {
+            temp = temp - 273.15;
+        }
+
+        // Convert Celsius to target unit
+        if (to === "F") {
+            converted = (temp * 9 / 5) + 32;
+            resultBox.innerHTML = converted.toFixed(2) + " °F";
+        } else if (to === "K") {
+            converted = temp + 273.15;
+            resultBox.innerHTML = converted.toFixed(2) + " K";
+        } else {
+            resultBox.innerHTML = temp.toFixed(2) + " °C";
+        }
+    }
+</script>
+
+</body>
+</html>
