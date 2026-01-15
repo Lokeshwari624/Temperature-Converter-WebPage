@@ -1,5 +1,4 @@
 
-
 # Temperature Converter Website
 
 A simple and responsive Temperature Converter Web App built using **HTML & CSS**.  
@@ -23,13 +22,6 @@ This app allows users to convert temperatures between **Celsius, Fahrenheit, and
 - VS Code (for coding and file management)  
 
 ---
-
-## How to Run
-
-1. Clone the repository:  
-```bash
-git clone https://github.com/Lokeshwari624/temperature-converter
-  2. Open index.html in any webpage
 ---
 
 ## Learning Outcomes
@@ -63,3 +55,4 @@ git clone https://github.com/Lokeshwari624/temperature-converter
 This project is licensed under **MIT License**.
 
 ---
+
